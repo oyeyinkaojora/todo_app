@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        <form action="" method="post">
+            {% csrf_token %}
+            {{form}}
+            <button type="submit">submit</button>
+        </form>
+
+       <ul>  
+           {% for todo in todos %}
+            <li> 
+            {{todo.title}} - {{todo.completed}} 
+              <a href=" {% url 'update-todo' todo.id %} ">Update</a> 
+              <a href=" {% url 'delete-todo' todo.id %} ">Delete</a> 
+            </li>
+           {% endfor %}
+       </ul>
+        
+        <script src="" async defer></script>
+    </body>
+</html>
