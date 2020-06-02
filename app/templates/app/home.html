@@ -1,30 +1,37 @@
-<!DOCTYPE html>
-<html class="no-js"> <!--<![endif]-->
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
-    </head>
-    <body>
-        <form action="" method="post">
+{% extends 'app/base.html' %}
+
+{% block content %}
+<form class="form-inline" method="post" >
+     {% csrf_token %}
+   	<div class="input-group mb-2">
+        <div class="input-group-append">
+                <span class="input-group-text">Title</span>
+            </div>
+            {{form.title}}
+        </div>
+        <br>
+        <div class="input-group mb-2">
+            <div class="input-group-append">
+                <span class="input-group-text">completed</span>
+            </div>
+            {{form.completed}}
+        </div>
+    </div>    
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+<ul>  
+    {% for todo in todos %}
+    <li> 
+    {{todo.title}} - {{todo.completed}} 
+        <a class="btn btn-info" href=" {% url 'update-todo' todo.id %} ">Update</a> 
+        <a class="btn btn-danger" href=" {% url 'delete-todo' todo.id %} ">Delete</a> 
+    </li>
+    {% endfor %}
+</ul>
+{% endblock content %}
+        {% comment %} <form action="" method="post">
             {% csrf_token %}
             {{form}}
             <button type="submit">submit</button>
-        </form>
+        </form> {% endcomment %}
 
-       <ul>  
-           {% for todo in todos %}
-            <li> 
-            {{todo.title}} - {{todo.completed}} 
-              <a href=" {% url 'update-todo' todo.id %} ">Update</a> 
-              <a href=" {% url 'delete-todo' todo.id %} ">Delete</a> 
-            </li>
-           {% endfor %}
-       </ul>
-        
-        <script src="" async defer></script>
-    </body>
-</html>

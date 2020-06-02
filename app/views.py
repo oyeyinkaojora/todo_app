@@ -26,7 +26,7 @@ def updateTodo(request,pk):
             form_update.save()  
             return redirect('/')  
     context = {
-        'todos':todos_update,
+        'todo':todos_update,
         'form':form_update
     }
     return render(request,'app/update.html',context) 
