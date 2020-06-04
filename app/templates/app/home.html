@@ -1,22 +1,10 @@
 {% extends 'app/base.html' %}
+{% load crispy_forms_tags %}
 
 {% block content %}
 <form class="form-inline" method="post" >
      {% csrf_token %}
-   	<div class="input-group mb-2">
-        <div class="input-group-append">
-                <span class="input-group-text">Title</span>
-            </div>
-            {{form.title}}
-        </div>
-        <br>
-        <div class="input-group mb-2">
-            <div class="input-group-append">
-                <span class="input-group-text">completed</span>
-            </div>
-            {{form.completed}}
-        </div>
-    </div>    
+   	 {{form|crispy}} 
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 <ul>  
@@ -29,9 +17,5 @@
     {% endfor %}
 </ul>
 {% endblock content %}
-        {% comment %} <form action="" method="post">
-            {% csrf_token %}
-            {{form}}
-            <button type="submit">submit</button>
-        </form> {% endcomment %}
+
 

@@ -1,13 +1,11 @@
 {% extends 'app/base.html' %}
+{% load crispy_forms_tags %}
+
+
 {% block content %}
 <form class="form-inline" method="post" action="/updateTodo/{{todo.id}}/">
     {% csrf_token %}
-    <label for="task">Task:</label>
-    <input type="text" name="title" class="form-control" placeholder="Enter email" id="email">
-    <label class="form-check-label">
-    <input class="form-check-input" name='completed' type="checkbox"> completed
-    </label>
-    </div>
+    {{form|crispy}}
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 {% endblock content %}
