@@ -1,6 +1,7 @@
 from django.shortcuts import render , redirect
 from .models import Todo
 from .forms import TodoForm
+from django.http import HttpResponse,HttpResponseRedirect
 # Create your views here.
 
 
@@ -24,10 +25,10 @@ def updateTodo(request,pk):
         form_update = TodoForm(request.POST,instance = todos_update)
         if form_update.is_valid:
             form_update.save()  
-            return redirect('/')  
+            return HttpResponseRedirect('/')
     context = {
         'todo':todos_update,
-        'form':form_update
+        'form':form_update,
     }
     return render(request,'app/update.html',context) 
 
