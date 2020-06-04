@@ -117,3 +117,4 @@ widgetsnbextension==3.4.2
 wrapt==1.10.11
 xgboost==0.90
 xlrd==1.2.0
+django-crispy-forms
